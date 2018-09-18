@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/listTasks', 'Api\TasksController@show');
-Route::post('/addTask', 'Api\TasksController@add');
-Route::get('/deleteTask/{id}', 'Api\TasksController@delete');
-Route::get('/updateTask/{id}', 'Api\TasksController@update');
+Route::get('/listTasks', array('middleware' => 'cors', 'uses' => 'Api\TasksController@show'));
+Route::post('/addTask', array('middleware' => 'cors', 'uses' => 'Api\TasksController@add'));
+Route::get('/deleteTask/{id}', array('middleware' => 'cors', 'uses' => 'Api\TasksController@delete'));
+Route::get('/updateTask/{id}', array('middleware' => 'cors', 'uses' => 'Api\TasksController@update'));
