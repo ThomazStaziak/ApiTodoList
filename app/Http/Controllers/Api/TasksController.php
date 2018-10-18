@@ -33,23 +33,27 @@ class TasksController extends Controller
     {
       $id = intval($id);
       $tarefa = Task::find($id);
-      $salvar = $tarefa
+      $save = $tarefa
       ? $tarefa->delete()
       : false;
-      $array = array("deletado" => $salvar);
+      $array = array("deletado" => $save);
 
       return json_encode($array);
     }
 
-    public function update($id)
+    public function update($id, $paramStatus)
     {
       $id = intval($id);
       $status = Task::find($id);
-      $status->status = 1;
-      $salvar = $status
+      if ($paramStatus === "feito") {
+        $status->status = 1;
+      } else {
+        $status->status = 0;
+      }
+      $save = $status
       ? $status->save()
       : false;
-      $array = array("atualizado" => $salvar);
+      $array = array("atualizado" => $save);
       return json_encode($array);
     }
 }
