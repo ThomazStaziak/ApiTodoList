@@ -13,9 +13,10 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('tarefas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('text');
+            $table->string('conteudo');
+            $table->enum('status', ['a fazer', 'feito'])->default('a fazer');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('tarefas');
     }
 }
