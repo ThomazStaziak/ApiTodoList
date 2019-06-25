@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/listar-tarefas', array('middleware' => 'cors', 'uses' => 'Api\TarefasController@show'));
 Route::post('/adicionar-tarefa', array('middleware' => 'cors', 'uses' => 'Api\TarefasController@add'));
 Route::put('/atualizar-tarefa/{id}', array('middleware' => 'cors', 'uses' => 'Api\TarefasController@update'));
+Route::delete('/deletar-tarefa/{id}', array('middleware' => 'cors', 'uses' => 'Api\TarefasController@delete'));

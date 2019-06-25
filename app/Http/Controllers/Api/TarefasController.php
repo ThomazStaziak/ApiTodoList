@@ -39,9 +39,15 @@ class TarefasController extends Controller
         
       $salvou = $tarefa->save();
 
-      if (!$salvou) 
-        return response()->json([$tarefa->conteudo => "não foi possível atualizar"], 500);
-      
-      return response()->json([$tarefa->conteudo => "atualizado com sucesso"], 201);
+      return $tarefa;
+    }
+
+    public function delete($id)
+    {
+      $tarefa = Tarefa::find($id);
+
+      $deletou = $tarefa->delete();
+
+      return json_encode($deletou);
     }
 }
