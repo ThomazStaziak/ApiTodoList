@@ -1,0 +1,44 @@
+- PASSO 1
+Criar uma conta no https://dashboard.heroku.com/ e ativar no e-mail
+
+- PASSO 2
+Criar um app no heroku
+
+- PASSO 3
+Sicronizar o app com o repositório do github
+
+- PASSO 4
+Ativar o deploy automático
+
+- PASSO 5
+Adicionar a extensão do PostgreSQL
+
+- PASSO 6
+Pegar informações de conexão com o PostgreSQL
+
+- PASSO 7
+Configurar o composer.json
+
+> "post-autoload-dump": [
+        "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+        "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+        "@php artisan key:generate",
+        "@php artisan:migrate --force",
+        "@php artisan package:discover"
+    ]
+
+- PASSO 8
+Configurar o .env
+
+> DB_CONNECTION=pgsql
+> DB_HOST=
+> DB_PORT=
+> DB_DATABASE=
+> DB_USERNAME=
+> DB_PASSWORD=
+
+- PASSO 9
+Remover o .env do .gitignore
+
+- PASSO 10
+Subir no github
